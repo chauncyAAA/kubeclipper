@@ -7,13 +7,13 @@ require (
 	github.com/containerd/containerd v1.6.19
 	github.com/coreos/go-oidc/v3 v3.6.0
 	github.com/dlclark/regexp2 v1.10.0
-	github.com/emicklei/go-restful v2.9.6+incompatible
-	github.com/emicklei/go-restful-openapi v0.0.0-00010101000000-000000000000
+	github.com/emicklei/go-restful-openapi/v2 v2.9.1
+	github.com/emicklei/go-restful/v3 v3.9.0
 	github.com/evanphx/json-patch v4.12.0+incompatible
 	github.com/fatih/color v1.7.0
 	github.com/go-logr/zapr v1.2.3
 	github.com/go-openapi/loads v0.19.5
-	github.com/go-openapi/spec v0.19.7
+	github.com/go-openapi/spec v0.20.4
 	github.com/go-openapi/strfmt v0.19.5
 	github.com/go-openapi/validate v0.19.8
 	github.com/go-redis/redis/v8 v8.11.5
@@ -38,7 +38,7 @@ require (
 	github.com/prometheus/client_golang v1.16.0
 	github.com/robfig/cron/v3 v3.0.1
 	github.com/sethvargo/go-password v0.2.0
-	github.com/shirou/gopsutil/v3 v3.21.10
+	github.com/shirou/gopsutil/v3 v3.24.2
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5
@@ -55,6 +55,7 @@ require (
 	golang.org/x/term v0.10.0
 	golang.org/x/text v0.11.0
 	gopkg.in/natefinch/lumberjack.v2 v2.0.0
+	gopkg.in/yaml.v2 v2.4.0
 	k8s.io/api v0.26.4
 	k8s.io/apimachinery v0.26.4
 	k8s.io/apiserver v0.26.4
@@ -100,7 +101,8 @@ require (
 	github.com/docker/docker-credential-helpers v0.7.0 // indirect
 	github.com/docker/go-events v0.0.0-20190806004212-e31b211e4f1c // indirect
 	github.com/dustin/go-humanize v1.0.1 // indirect
-	github.com/emicklei/go-restful/v3 v3.9.0 // indirect
+	github.com/emicklei/go-restful v2.9.6+incompatible // indirect
+	github.com/emicklei/go-restful-openapi v0.0.0-00010101000000-000000000000 // indirect
 	github.com/felixge/httpsnoop v1.0.3 // indirect
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
 	github.com/ghodss/yaml v1.0.0 // indirect
@@ -220,7 +222,6 @@ require (
 	gopkg.in/inf.v0 v0.9.1 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	gopkg.in/tomb.v1 v1.0.0-20141024135613-dd632973f1e7 // indirect
-	gopkg.in/yaml.v2 v2.4.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 	k8s.io/kms v0.26.4 // indirect
 	k8s.io/kube-openapi v0.0.0-20221012153701-172d655c2280 // indirect

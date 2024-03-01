@@ -30,7 +30,7 @@ import (
 	"github.com/kubeclipper/kubeclipper/pkg/authentication/options"
 	"github.com/kubeclipper/kubeclipper/pkg/simple/client/cache"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 	"go.uber.org/zap"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 

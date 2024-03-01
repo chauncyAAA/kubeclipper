@@ -27,8 +27,8 @@ import (
 
 	"github.com/kubeclipper/kubeclipper/pkg/authorization/authorizer"
 
-	"github.com/emicklei/go-restful"
-	restfulspec "github.com/emicklei/go-restful-openapi"
+	restfulspec "github.com/emicklei/go-restful-openapi/v2"
+	restful "github.com/emicklei/go-restful/v3"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
 	"github.com/kubeclipper/kubeclipper/pkg/errors"

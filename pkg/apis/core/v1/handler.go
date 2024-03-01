@@ -41,7 +41,7 @@ import (
 
 	"github.com/kubeclipper/kubeclipper/pkg/controller/cronbackupcontroller"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 	"github.com/google/uuid"
 	"github.com/gorilla/websocket"
 	"github.com/robfig/cron/v3"

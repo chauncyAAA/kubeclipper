@@ -38,8 +38,8 @@ import (
 	"github.com/kubeclipper/kubeclipper/pkg/errors"
 	"github.com/kubeclipper/kubeclipper/pkg/models/lease"
 
-	"github.com/emicklei/go-restful"
-	restfulspec "github.com/emicklei/go-restful-openapi"
+	restfulspec "github.com/emicklei/go-restful-openapi/v2"
+	restful "github.com/emicklei/go-restful/v3"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
 	"github.com/kubeclipper/kubeclipper/pkg/models"

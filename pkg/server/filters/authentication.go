@@ -19,7 +19,7 @@
 package filters
 
 import (
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 	"k8s.io/apiserver/pkg/authentication/authenticator"
 
 	"github.com/kubeclipper/kubeclipper/pkg/logger"

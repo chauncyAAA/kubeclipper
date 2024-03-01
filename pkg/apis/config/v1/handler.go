@@ -37,7 +37,7 @@ import (
 
 	serverconfig "github.com/kubeclipper/kubeclipper/pkg/server/config"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 
 	"github.com/kubeclipper/kubeclipper/pkg/models/platform"
 	"github.com/kubeclipper/kubeclipper/pkg/server/restplus"

@@ -27,7 +27,7 @@ import (
 
 	authx509 "github.com/kubeclipper/kubeclipper/pkg/authentication/request/x509"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 	"github.com/google/uuid"
 	"go.uber.org/zap"
 	"k8s.io/apimachinery/pkg/util/sets"

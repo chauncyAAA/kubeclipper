@@ -19,7 +19,7 @@
 package proxy
 
 import (
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 
 	"github.com/kubeclipper/kubeclipper/pkg/models/cluster"
 )

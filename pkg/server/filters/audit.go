@@ -23,7 +23,7 @@ import (
 
 	"github.com/kubeclipper/kubeclipper/pkg/client/clientrest"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 
 	"github.com/kubeclipper/kubeclipper/pkg/auditing"
 	"github.com/kubeclipper/kubeclipper/pkg/logger"

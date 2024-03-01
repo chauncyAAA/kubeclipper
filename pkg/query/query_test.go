@@ -23,7 +23,7 @@ import (
 	"reflect"
 	"testing"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 )
 
 func Test_parseFuzzy(t *testing.T) {

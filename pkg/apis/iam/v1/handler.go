@@ -45,7 +45,7 @@ import (
 
 	"github.com/kubeclipper/kubeclipper/pkg/models/iam"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 	"go.uber.org/zap"
 	rbacv1 "k8s.io/api/rbac/v1"
 	apimachineryErrors "k8s.io/apimachinery/pkg/api/errors"

@@ -27,7 +27,7 @@ import (
 
 	"github.com/kubeclipper/kubeclipper/pkg/client/clientrest"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 	"k8s.io/apimachinery/pkg/fields"
 	"k8s.io/apimachinery/pkg/labels"
 )

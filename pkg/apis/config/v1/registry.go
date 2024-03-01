@@ -30,11 +30,11 @@ import (
 
 	"github.com/kubeclipper/kubeclipper/pkg/query"
 
-	restfulspec "github.com/emicklei/go-restful-openapi"
+	restfulspec "github.com/emicklei/go-restful-openapi/v2"
 
 	"github.com/kubeclipper/kubeclipper/pkg/component"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
 	serverconfig "github.com/kubeclipper/kubeclipper/pkg/server/config"

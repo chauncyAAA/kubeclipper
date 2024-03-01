@@ -25,7 +25,7 @@ import (
 
 	"github.com/kubeclipper/kubeclipper/pkg/utils/strutil"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 
 	"github.com/kubeclipper/kubeclipper/pkg/models/platform"
 	"github.com/kubeclipper/kubeclipper/pkg/query"

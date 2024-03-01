@@ -21,7 +21,7 @@ package restplus
 import (
 	"net/http"
 
-	"github.com/emicklei/go-restful"
+	restful "github.com/emicklei/go-restful/v3"
 	"go.uber.org/zap"
 	apiError "k8s.io/apimachinery/pkg/api/errors"
 
