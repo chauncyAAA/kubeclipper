@@ -80,7 +80,7 @@ type UpgradeOptions struct {
 	agentIPs  []string
 }
 
-func NewUpgradeOptions(stream options.IOStreams) *UpgradeOptions {
+func newUpgradeOptions(stream options.IOStreams) *UpgradeOptions {
 	return &UpgradeOptions{
 		BaseOptions: BaseOptions{
 			CliOpts:      options.NewCliOptions(),
@@ -93,7 +93,7 @@ func NewUpgradeOptions(stream options.IOStreams) *UpgradeOptions {
 }
 
 func NewCmdUpgrade(stream options.IOStreams) *cobra.Command {
-	o := NewUpgradeOptions(stream)
+	o := newUpgradeOptions(stream)
 	cmd := &cobra.Command{
 		Use:                   "upgrade ( component ) ( --pkg [--binary] )|( --online --version ) [flags]",
 		DisableFlagsInUseLine: true,

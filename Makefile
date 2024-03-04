@@ -54,11 +54,12 @@ format-deps:
 checkfmt: format-deps fmt goimports lint
 
 fmt:
-	gofmt -s -w ./pkg ./cmd ./tools ./test
+	@gofmt -s -w ./pkg ./cmd ./tools ./test
 
 goimports:
 	@hack/update-goimports.sh
 
+# 检查go项目中可通过编译但仍可能存在错误的代码，例如无法访问的代码、错误的锁使用、不必要的赋值、布尔运算错误等
 vet:
 	go vet ./pkg/... ./cmd/...
 
