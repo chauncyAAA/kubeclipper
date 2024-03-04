@@ -8,12 +8,13 @@ import (
 	"log"
 	"os"
 
-	auditingv1 "github.com/kubeclipper/kubeclipper/pkg/apis/auditing/v1"
-	"github.com/kubeclipper/kubeclipper/pkg/apis/proxy"
+	// auditingv1 "github.com/kubeclipper/kubeclipper/pkg/apis/auditing/v1"
+	// "github.com/kubeclipper/kubeclipper/pkg/apis/proxy"
+	"github.com/kubeclipper/kubeclipper/pkg/logger"
 
-	"github.com/kubeclipper/kubeclipper/pkg/apis/oauth"
+	// "github.com/kubeclipper/kubeclipper/pkg/apis/oauth"
 
-	iamv1 "github.com/kubeclipper/kubeclipper/pkg/apis/iam/v1"
+	// iamv1 "github.com/kubeclipper/kubeclipper/pkg/apis/iam/v1"
 
 	corev1 "github.com/kubeclipper/kubeclipper/pkg/apis/core/v1"
 
@@ -26,20 +27,21 @@ import (
 	urlruntime "k8s.io/apimachinery/pkg/util/runtime"
 	"k8s.io/component-base/version"
 
-	configv1 "github.com/kubeclipper/kubeclipper/pkg/apis/config/v1"
-	"github.com/kubeclipper/kubeclipper/pkg/logger"
+	// configv1 "github.com/kubeclipper/kubeclipper/pkg/apis/config/v1"
 )
 
 var output string
 
 func init() {
-	flag.StringVar(&output, "output", "./api/openapi-spec/swagger.json", "--output=./api.json")
+	flag.StringVar(&output, "output", "./docs/openapi-spec/swagger.json", "--output=./api.json")
 }
 
 func main() {
 	flag.Parse()
+	// 生成api文档
 	swaggerSpec := generateSwaggerJSON()
 
+	// 格式校验
 	err := validateSpec(swaggerSpec)
 	if err != nil {
 		logger.Warn("Swagger specification has errors")
@@ -47,64 +49,58 @@ func main() {
 }
 
 func validateSpec(apiSpec []byte) error {
-
-	swaggerDoc, err := loads.Analyzed(apiSpec, "2.0")
+	// doc, err := loads.Spec(output, loads.WithDocLoader(loads.JSONDoc))
+	doc, err := loads.Analyzed(apiSpec, "2.0", loads.WithDocLoader(loads.JSONDoc))
 	if err != nil {
 		return err
 	}
-
-	// Attempts to report about all errors
-	validate.SetContinueOnErrors(true)
-
-	v := validate.NewSpecValidator(swaggerDoc.Schema(), strfmt.Default)
-	result, _ := v.Validate(swaggerDoc)
-
+	validator := validate.NewSpecValidator(doc.Schema(), strfmt.Default)
+	validator.SetContinueOnErrors(true)
+	result, _ := validator.Validate(doc)
 	if result.HasWarnings() {
 		log.Printf("See warnings below:\n")
 		for _, desc := range result.Warnings {
 			log.Printf("- WARNING: %s\n", desc.Error())
 		}
-
 	}
 	if result.HasErrors() {
-		str := fmt.Sprintf("The swagger spec is invalid against swagger specification %s.\nSee errors below:\n", swaggerDoc.Version())
+		str := fmt.Sprintf("The swagger spec is invalid against swagger specification %s.\nSee errors below:\n", doc.Version())
 		for _, desc := range result.Errors {
 			str += fmt.Sprintf("- %s\n", desc.Error())
 		}
 		log.Println(str)
 		return errors.New(str)
 	}
-
 	return nil
 }
 
 func generateSwaggerJSON() []byte {
-
 	container := restful.NewContainer()
 	urlruntime.Must(corev1.AddToContainer(container, nil, nil, nil, nil, nil, nil, nil, nil, nil))
-	urlruntime.Must(iamv1.AddToContainer(container, nil, nil, nil))
-	urlruntime.Must(configv1.AddToContainer(container, nil, nil))
-	urlruntime.Must(oauth.AddToContainer(container, nil, nil, nil, nil, nil, nil, nil))
-	urlruntime.Must(proxy.AddToContainer(container, nil))
-	urlruntime.Must(auditingv1.AddToContainer(container, nil))
+	// urlruntime.Must(iamv1.AddToContainer(container, nil, nil, nil))
+	// urlruntime.Must(configv1.AddToContainer(container, nil, nil))
+	// urlruntime.Must(oauth.AddToContainer(container, nil, nil, nil, nil, nil, nil, nil))
+	// urlruntime.Must(proxy.AddToContainer(container, nil))
+	// urlruntime.Must(auditingv1.AddToContainer(container, nil))
 
 	config := restfulspec.Config{
 		WebServices:                   container.RegisteredWebServices(),
-		PostBuildSwaggerObjectHandler: enrichSwaggerObject}
+		PostBuildSwaggerObjectHandler: enrichSwaggerObject,
+	}
 
 	swagger := restfulspec.BuildSwagger(config)
-	swagger.Info.Extensions = make(spec.Extensions)
-	swagger.Info.Extensions.Add("x-tagGroups", []struct {
-		Name string   `json:"name"`
-		Tags []string `json:"tags"`
-	}{
-		// {
-		//	Name: "Cluster",
-		//	Tags: []string{
-		//		constants.CoreClusterTag,
-		//	},
-		// },
-	})
+	// swagger.Info.Extensions = make(spec.Extensions)
+	// swagger.Info.Extensions.Add("x-tagGroups", []struct {
+	// 	Name string   `json:"name"`
+	// 	Tags []string `json:"tags"`
+	// }{
+	// 	// {
+	// 	//	Name: "Cluster",
+	// 	//	Tags: []string{
+	// 	//		constants.CoreClusterTag,
+	// 	//	},
+	// 	// },
+	// })
 
 	data, _ := json.MarshalIndent(swagger, "", "  ")
 	err := os.WriteFile(output, data, 0644)

@@ -7,7 +7,7 @@ import (
 	"fmt"
 
 	"github.com/gorilla/websocket"
-	"github.com/onsi/ginkgo"
+	"github.com/onsi/ginkgo/v2"
 
 	v1 "github.com/kubeclipper/kubeclipper/pkg/apis/core/v1"
 	"github.com/kubeclipper/kubeclipper/pkg/query"

@@ -1,4 +1,5 @@
 # Hosts static html documentation files
 
-FROM nginx
-COPY build/ /usr/share/nginx/html
+FROM nginx:latest
+COPY build /usr/share/nginx/html
+#COPY build/index.html build/navData.js /usr/share/nginx/html

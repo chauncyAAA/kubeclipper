@@ -14,11 +14,6 @@ type AdvancedTemplate struct {
 	funcMap template.FuncMap
 }
 
-const (
-	SplitPipelineKey       = "split"
-	StrArrIndexPipelineKey = "index"
-)
-
 func funcMap() template.FuncMap {
 	f := sprig.TxtFuncMap()
 

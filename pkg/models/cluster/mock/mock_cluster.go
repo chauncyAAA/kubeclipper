@@ -2,6 +2,7 @@
 // Source: interface.go
 
 // Package mock_cluster is a generated GoMock package.
+//  ccc
 package mock_cluster
 
 import (

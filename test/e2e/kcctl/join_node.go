@@ -10,7 +10,7 @@ import (
 	"github.com/kubeclipper/kubeclipper/test/e2e/cluster"
 	"github.com/kubeclipper/kubeclipper/test/framework/node"
 
-	"github.com/onsi/ginkgo"
+	"github.com/onsi/ginkgo/v2"
 
 	"github.com/kubeclipper/kubeclipper/test/framework"
 )

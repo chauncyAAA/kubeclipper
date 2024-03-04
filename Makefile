@@ -70,7 +70,10 @@ lint:
 .PHONY: cli cleancli cli-serve
 cli: cleancli
 	go run ./tools/kcctldocs-gen/main.go
-	docker run -v $(shell pwd)/tools/kcctldocs-gen/generators/includes:/source -v $(shell pwd)/tools/kcctldocs-gen/generators/build:/build -v $(shell pwd)/tools/kcctldocs-gen/generators/:/manifest brianpursley/brodocs:latest
+	docker run --name=kcctldocs --rm -v $(shell pwd)/tools/kcctldocs-gen/generators/includes:/source \
+	-v $(shell pwd)/tools/kcctldocs-gen/generators/build:/build \
+	-v $(shell pwd)/tools/kcctldocs-gen/generators/:/manifest \
+	brianpursley/brodocs:latest
 
 cleancli:
 	rm -rf $(shell pwd)/tools/kcctldocs-gen/generators/includes
@@ -78,7 +81,5 @@ cleancli:
 	rm -rf $(shell pwd)/tools/kcctldocs-gen/generators/manifest.json
 
 cli-serve:cli
-	docker stop kcctldocs
-	docker rm -f kcctldocs
 	docker build $(shell pwd)/tools/kcctldocs-gen/generators -t kubeclipper/kcctl:latest -f $(shell pwd)/tools/kcctldocs-gen/generators/Dockerfile
-	docker run -p 8080:80 --name kcctldocs kubeclipper/kcctl:latest
+	docker run -p 8080:80 --name kcctldocs --rm kubeclipper/kcctl:latest

@@ -31,7 +31,7 @@ readonly KUBE_STATIC_LIBRARIES=(
   kubeclipper-agent
   kubeclipper-proxy
   kcctl
-  e2e.test
+  e2e.test6
 )
 
 

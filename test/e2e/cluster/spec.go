@@ -8,7 +8,7 @@ import (
 
 	"github.com/kubeclipper/kubeclipper/pkg/clusteroperation"
 
-	"github.com/onsi/ginkgo"
+	"github.com/onsi/ginkgo/v2"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
 	apiv1 "github.com/kubeclipper/kubeclipper/pkg/apis/core/v1"

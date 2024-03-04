@@ -4,8 +4,7 @@ import (
 	"flag"
 
 	"github.com/kubeclipper/kubeclipper/pkg/constatns"
-
-	"github.com/onsi/ginkgo/config"
+	"github.com/onsi/ginkgo/v2"
 )
 
 const (
@@ -29,14 +28,12 @@ type TestContextType struct {
 var TestContext TestContextType
 
 func RegisterCommonFlags(flags *flag.FlagSet) {
+	suiteConfig, reporterConfig := ginkgo.GinkgoConfiguration()
 	// Turn on verbose by default to get spec names
-	config.DefaultReporterConfig.Verbose = true
-
-	// Turn on EmitSpecProgress to get spec progress (especially on interrupt)
-	config.GinkgoConfig.EmitSpecProgress = true
+	reporterConfig.Verbose = true
 
 	// Randomize specs as well as suites
-	config.GinkgoConfig.RandomizeAllSpecs = true
+	suiteConfig.RandomizeAllSpecs = true
 
 	flag.BoolVar(&TestContext.InMemoryTest, "in-memory-test", false,
 		"Whether Ki-server and Ki-agent be started in memory.")
